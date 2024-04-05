@@ -40,7 +40,23 @@ const Chat = () => {
 
   useEffect(() => {
     initSocket();
-    setSocket(io("http://localhost:3000"));
+    setSocket(io("http://localhost:3000", {
+      path: "/api/chat",
+      addTrailingSlash: false,
+      reconnectionDelay: 1000,
+      reconnection: true,
+      reconnectionAttempts: 10,
+      // transports: ['websocket'],
+      agent: false,
+      upgrade: false,
+      rejectUnauthorized: false
+    }));
+
+    return ()=>{
+      if (socket?.readyState === 1) { // <-- This is important
+        socket.close();
+    }
+    }
   }, []);
 
   if (socket) {

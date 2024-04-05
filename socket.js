@@ -18,7 +18,7 @@ app.prepare().then(() => {
     console.log("> Ready on http://localhost:3000");
   });
 
-  const io = require("socket.io")(server);
+  const io = new Server(server);
   console.debug("\n\n\n\n");
   console.debug({ io });
   console.debug("\n\n\n\n");

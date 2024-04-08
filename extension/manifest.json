@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "API Endpoint Tracker",
+  "version": "1.0",
+  "description": "Capture API endpoints triggered in a webpage",
+  "permissions": [
+    "<all_urls>",
+    "activeTab",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "background": {
+    "service_worker": "background.js",
+    "persistent": true
+  },
+  "host_permissions": ["*localhost:3000/*"]
+}
